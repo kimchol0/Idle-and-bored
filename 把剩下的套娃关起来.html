@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js测试页面</title>
+    <script src="Vue.js environment/vue.js"></script>
+</head>
+<body>
+<div id="div1">
+    <a href="http://cn.bing.com" @click="jump">正常的链接bing</a>
+    <br>
+    <a href="http://cn.bing.com" @click.prevent="jump">prevent jump()之后的链接bing</a>
+    <br>
+    <a href="http://cn.bing.com" @click.prevent>纯prevent之后的链接bing</a>
+    <br>
+    <br>
+    <form @submit="jump" action="http://cn.bing.com">
+        <button type="submit">正常的form</button>
+    </form>
+    <form @submit.prevent="jump" action="http://cn.bing.com">
+        <button type="submit">prevent jump()之后的form</button>
+    </form>
+    <form @submit.prevent action="http://cn.bing.com">
+        <button type="submit">纯prevent之后的form</button>
+    </form>
+</div>
+</body>
+</html>
+<script>
+    new Vue({
+        el:'#div1',
+        data:{},
+        methods:{
+            jump:function () {
+                alert("jump()函数被调用");
+            }
+        }
+    })
+</script>
